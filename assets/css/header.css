@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+header {
+  background-color: #5b5be2; }
+  header ul {
+    display: flex;
+    font-weight: 700;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1%;
+    font-size: 1.5rem;
+    color: white; }
+  header li {
+    list-style-type: none; }
+  header button {
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: rebeccapurple;
+    color: white;
+    font-weight: 700; }

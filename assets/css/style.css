@@ -1,0 +1,22 @@
+form {
+  margin: 1%; }
+  form input {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 25px; }
+
+#feed-posts h4 {
+  margin: 1%;
+  font-size: 2rem; }
+
+#feed-posts textarea {
+  border-radius: 10px; }
+
+.profile {
+  margin: 1%; }
+  .profile h2 {
+    color: #2e005c; }
+  .profile p {
+    margin: 20px;
+    font-size: 1.6rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; }

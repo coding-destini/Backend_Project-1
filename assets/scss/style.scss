@@ -1,0 +1,36 @@
+// sign in 
+
+form{
+    margin: 1%;
+    input{
+        padding: 10px;
+        border: 1px solid black;
+        border-radius: 25px;
+    }
+}
+
+// home
+#feed-posts{
+    h4{
+        margin: 1%;
+        font-size: 2rem;
+    }
+    textarea{
+        border-radius: 10px;
+    }
+    
+
+}
+
+// profile
+.profile{
+    margin: 1%;
+    h2{
+    color: rgb(46, 0, 92);
+    }
+    p{
+        margin: 20px;
+        font-size: 1.6rem;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+}

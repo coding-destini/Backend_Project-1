@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="/css/header.css" />
+<header>
+  <nav>
+    <ul>
+      <li>
+    <h1>Codebook</h1>
+      </li>
+      <li><p>Home</p></li>
+      <li><p>Post</p></li>
+      <li><p>Users</p></li>
+      <li><p>Chats</p></li>
+      <li><p>Friends</p></li>
+      <li><p>Profile</p></li>
+ 
+    <% if(locals.user){%>
+    <li>
+      <a href="/users/profile"> <%= user.name%> </a>
+    </li>
+    <li>
+      <a href="/users/sign-out"><button>Sign Out</button></a>
+    </li>
+
+    <%} else {%>
+    <li>
+      <a href="/users/sign-in"><button>Sign In</button></a>
+    </li>
+    <li>
+      <a href="/users/sign-out"><button>Sign Out</button></a>
+    </li>
+
+    <%}%>
+  </ul>
+  </nav>
+  
+</header>
