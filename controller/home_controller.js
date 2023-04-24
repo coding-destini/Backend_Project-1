@@ -1,5 +1,5 @@
 const post = require('../models/post')
-
+const User = require('../models/user')
 //Export a function which is publicly available to my routes file and that should return something
 // module.export works universly 
 //function is similar to app.get app.use etc like we did before
@@ -27,10 +27,12 @@ module.exports.home= async(req,res)=>{
         }
     })
     .exec();
+    let user = await User.find({});
     return res.render('home',{
         title : "Home",
         header : "CodeBook",
-        Post : posts
+        Post : posts,
+        All_Users : user
     })
 
 // It's using await to wait for the find() method to return a list of all the post documents in the database.
