@@ -1,34 +1,37 @@
-<li> 
-    <!-- if user is sign in && and the user which is sign in == user who created the post  -->
+<link rel="stylesheet" href="/css/post.css">
+
+     <div class="post">
+          <!-- if user is sign in && and the user which is sign in == user who created the post  -->
     <% if (locals.user && locals.user.id == post.user.id){ %>
-     <small>
+      <div id="delete-post">
+       <small>
          <a href="/posts/destroy/<%= post.id %>">Delete Post</a>
      </small>
-     <% } %>
-<p><%=post.content%></p>
-<br>
-<b><p>(Post created by : ) <%=post.user.name%></p></b>
-
-
-<div class="post-comments">
-<%if(locals.user){%>
-<form action="/comments/create" method="post">
- <input type="text" name="content" id="" placeholder="type here to add comment" required>
- 
- <input type="hidden" name="post" id=""
- value="<%=post._id%>">
- <input type="submit" value="Add comment"id="submit">
- 
-</form>  
-<%}%>
-<div class="post-comments-list">
- <ul class="post-comments-<%=post._id%>">
-     <% for(comment of post.comments){%>
-       <%- include('_comment') -%>
-        
-     <%}%>
-  
- </ul>
-</div>
-</div>
-</li>
+      </div>
+        <% } %>
+       <div id="creater"> <b><p><%=post.user.name%></p></b></div>
+       <div id="content"> <p><%=post.content%></p></div>
+       
+       <div class="post-comments">
+        <%if(locals.user){%>
+        <form action="/comments/create" method="post">
+         <input type="text" name="content" id="" placeholder="type here to add comment" required>
+         
+         <input type="hidden" name="post" id=""
+         value="<%=post._id%>">
+         <input type="submit" value="Add comment"id="submit">
+         
+        </form>  
+        <%}%>
+        <div class="post-comments-list">
+         <ul class="post-comments-<%=post._id%>">
+             <% for(comment of post.comments){%>
+               <%- include('_comment') -%>
+                
+             <%}%>
+          
+         </ul>
+        </div>
+        </div>
+     </div>
+   

@@ -1,0 +1,18 @@
+#home-container {
+  display: flex;
+  height: 100%; }
+  #home-container #feed-posts {
+    width: 70%; }
+    #home-container #feed-posts h4 {
+      border: 1px solid lightgray;
+      padding: 10px; }
+  #home-container #friends {
+    width: 30%;
+    padding: 20px;
+    border: 1px solid lightgray; }
+    #home-container #friends p {
+      border: 2px solid lightgray;
+      padding: 20px; }
+    #home-container #friends a {
+      text-decoration: none;
+      font-size: 2rem; }

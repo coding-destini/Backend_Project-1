@@ -26,7 +26,6 @@ module.exports.home= async(req,res)=>{
             path:'user'
         }
     })
-    .exec();
     let user = await User.find({});
     return res.render('home',{
         title : "Home",

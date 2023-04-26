@@ -7,6 +7,12 @@
     <body>
         
         <%- include('_header'); %>
+        <!-- Greated than 0 means it should not be empthy string or Object  -->
+<%if(flash.success && flash.success.length>0){%>
+<h5>
+    <%= flash.success%>
+</h5>    
+<%}%>
         <%- body%>
         <%- include('_footer'); %>
         <%- script%>
