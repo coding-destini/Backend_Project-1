@@ -1,2 +1,4 @@
 footer {
-  display: flex; }
+  list-style: none;
+  margin-top: 20%;
+  position: absolute; }
