@@ -68,7 +68,7 @@ app.use(passport.session());
 //Whenever passpoer is initialized this fun() called , it will chack wheather session is beign present or not , if present then user will be set in locals, and is accessabvle in views
 app.use(passport.setAuthenticatedUser);
 app.use(flash());
-app.use(coustomMiddlware.setFlash)
+app.use(coustomMiddlware.setFlash);
 app.use('/',require('./routes'));
 
 

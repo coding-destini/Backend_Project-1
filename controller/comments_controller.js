@@ -18,7 +18,8 @@ module.exports.create = async (req,res)=>{
          post.save() 
         //  save() tells the DB that this is final and save it block it  
     }
-     
+    console.log(post)
+     req.flash('success',`Commented on ${req.user.name}'s POST :)`);
       res.redirect('/');
 
     } catch (error) {
@@ -40,7 +41,7 @@ module.exports.destroy = async (req, res) => {
   
       // Check if the current user is the owner of the comment
       if (comment.user.toString() !== req.user.id) {
-        console.log('User is not the owner of the comment');
+        console.log('User is not the owner of the comment :(');
         return res.status(401).send('Unauthorized');
       }
   
@@ -54,7 +55,7 @@ module.exports.destroy = async (req, res) => {
       await Post.findByIdAndUpdate(postId, { $pull: { comments: req.params.id } });
   
       // Redirect to the previous page with a success message
-    //   req.flash('success', 'Comment deleted successfully');
+      req.flash('success', 'Comment deleted successfully');
       res.redirect('back');
     } catch (err) {
       console.log('Error deleting comment:', err.message);

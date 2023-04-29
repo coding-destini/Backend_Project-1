@@ -20,7 +20,7 @@ passport.use(
 
         if (!user || user.password != password) {
           //  console.log("Invalid Username/Password");
-          req.flash("error", "Invalid Username/Password");
+          req.flash("success", "Invalid Username/Password");
           return done(null, false);
         }
         //if above condition will not run means user in real means it is founded
