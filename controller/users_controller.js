@@ -96,7 +96,7 @@ module.exports.createSession= (req,res)=>{
 }
 
 module.exports.destroySession=(req,res)=>{
-    req.logout(req.user, err => {
+    req.logout( err => {
         if(err) return next(err);
         req.flash('success','Logged out')
         res.redirect("/");

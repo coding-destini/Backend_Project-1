@@ -3,15 +3,28 @@ const Comment = require("../models/comment");
 
 module.exports.create = async (req, res) => {
   try {
-    await Post.create({
+    let post = await Post.create({
       content: req.body.content,
       //this  req.user._id is usable because of passport js from setAuthenticatedUser function , you can check it , go to passport-local-strategy
       user: req.user._id,
       // why only user id because id is unique for each user in DB
     });
+
+    //Check if this is a AJAX Request => (XML HTTP => XHR)
+    if (req.xhr) {
+      await post.populate("user");
+      return res.status(200).json({
+        data: {
+          post: post,
+        },
+        //Message is like a journal form whenever we interact with AJAX
+        message: "Post Created",
+      });
+    }
+    req.flash("success", "Post Created");
     return res.redirect("back");
   } catch (error) {
-    console.log("error in creating a post");
+    req.flash("error", error);
     return;
   }
 };
@@ -34,7 +47,6 @@ module.exports.AllPost = async (req, res) => {
 //       return res.status(404).send("Post not found");
 //     }
 
-    
 //     //here post.user => post schema has user id so we are match if this is martching with our user id or not
 //     // .id means converting the object id into string
 //     // if(post.user == req.user.id){
@@ -51,13 +63,12 @@ module.exports.AllPost = async (req, res) => {
 //     // Delete the post and its associated comments
 //     await post.remove();
 //     await Comment.deleteMany({ post: req.params.id });
-   
 
 //     // Redirect to the previous page with a success message
 //     res.redirect("back");
 //   } catch (error) {
 //     console.log("Error deleting post:", error.message);
-    
+
 //     res.redirect("back");
 //   }
 // };
@@ -81,11 +92,18 @@ module.exports.destroy = async (req, res) => {
     // Delete the post's associated comments
     await Comment.deleteMany({ post: req.params.id });
 
+    if (req.xhr) {
+      return res.status(200).json({
+        data: {
+          post_id: req.params.id,
+        },
+        message: "post deleted ",
+      });
+    }
     // Redirect to the previous page with a success message
-    req.flash("success", "Post deleted successfully");
+    req.flash("success", "Post deleted associated with comments");
     res.redirect("back");
   } catch (error) {
-    console.log("Error deleting post:", error.message);
     req.flash("error", "Sorry, we could not delete this post at this time.");
     res.redirect("back");
   }
