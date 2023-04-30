@@ -4,7 +4,7 @@
         <%=title%>
     </title>
 </h1>
-
+<img src="<%=user.avatar%>" alt="<%=user.name%>" width="100">
 <% if(user.id==profile_user.id) {%>
     <div class="profile">
         <p>Sign in User : <%=profile_user.name%></p>
@@ -17,10 +17,11 @@
      </div>
      <h1>Update Profile below</h1>
     <!-- if user matches then show form of update his/her profile -->
-    <form action="/users/update/<%= profile_user.id%>" method="POST">
+    <form action="/users/update/<%= profile_user.id%>" method="POST" enctype="multipart/form-data">
         <!-- //passing profile_user.name/email in value so that we can change it  -->
         <input type="text" name="name" placeholder="Your name" value="<%=profile_user.name%>" required>
         <input type="email" name="email" placeholder="Your email" value="<%=profile_user.email%>" required>
+       <input type="file" name="avatar" id="" placeholder="Profile Picture">
         <input type="submit" value="update">
     </form>
     <%}else{%>

@@ -5,26 +5,38 @@ module.exports.create = async (req,res)=>{
         //  1: find post with that post id first 
         //  2: create a comment after it 
         //   because we need to create a comment , alot it with the post and inside the post schema  we also add the comment id to the array we just created there 
-       let post = await Post.findById(req.body.post);
+      // let userPost = await Post.findById(req.body)
+        let post = await Post.findById(req.body.post);
       if(post){
-       const comment= await Comment.create({
+       let comment= await Comment.create({
             content:req.body.content,
             post:req.body.post,
             user:req.user._id
         },
         )
-    
+   
         post.comments.push(comment)
          post.save() 
         //  save() tells the DB that this is final and save it block it  
-    }
-    console.log(post)
-     req.flash('success',`Commented on ${req.user.name}'s POST :)`);
-      res.redirect('/');
+        console.log(comment)
+        comment= await Comment.findById(comment._id).populate('user')
+        if(req.xhr){
+         
+          return res.status(200).json({
+            data: {
+              comment: comment
+            },
+            //Message is like a journal form whenever we interact with AJAX
+            message: "Comment Added",
+          })
+        }
+      }
+     req.flash('success',`Commented Successfully :)`);
+     return res.redirect('back');
 
     } catch (error) {
-        console.log(error);
-        res.redirect('/');
+      console.log("Error: ", error);
+      return;
     }
 }
 
@@ -50,10 +62,23 @@ module.exports.destroy = async (req, res) => {
   
       // Delete the comment
       await comment.remove();
+
+
   
       // Remove the comment ID from the post's `comments` array
       await Post.findByIdAndUpdate(postId, { $pull: { comments: req.params.id } });
   
+
+     // send the comment id which was deleted back to the views
+     if (req.xhr){
+      return res.status(200).json({
+          data: {
+              comment_id: req.params.id
+          },
+          message: "Post deleted"
+      });
+  }
+
       // Redirect to the previous page with a success message
       req.flash('success', 'Comment deleted successfully');
       res.redirect('back');

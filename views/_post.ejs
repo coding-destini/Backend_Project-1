@@ -16,25 +16,27 @@
   </div>
   <div id="content"><p><%=post.content%></p></div>
 
-  <div class="post-comments">
-    <%if(locals.user){%>
-    <form action="/comments/create" method="post">
-      <input
-        type="text"
-        name="content"
-        id=""
-        placeholder="type here to add comment"
-        required
-      />
+    <div class="post-comments">
+        <% if (locals.user){ %>
+            <!-- let's give an id to the new comment form, we'll also need to make the same changes in home_posts.js where we're adding a post to the page -->
+            <form id="post-<%=post._id%>-c" action="/comments/create" method="post">
+                <input type="text" name="content" placeholder="Type Here to add comment..." required>
+                <input type="hidden" name="post" value="<%= post._id %>" >
+                <%=post._id%>
+                <button type="submit"> Add comment</button>
+            </form>
 
-      <input type="hidden" name="post" id="" value="<%=post._id%>" />
-      <input type="submit" value="Add comment" id="submit" />
-    </form>
-    <%}%>
-    <div class="post-comments-list">
-      <ul class="post-comments-<%=post._id%>">
-        <% for(comment of post.comments){%> <%- include('_comment') -%> <%}%>
-      </ul>
+        <% } %>
+
+        <div class="post-comments-list">
+            <ul id="post-comments-<%= post._id %>">
+                <% for (comment of post.comments){%>
+
+                    <%- include('_comment') -%>
+                    
+                
+                <%} %>
+            </ul>
+        </div>
     </div>
-  </div>
 </div>
