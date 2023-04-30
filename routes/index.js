@@ -16,7 +16,7 @@ router.use('/comments',require('./comments'));
 // for any further routes, access from here 
 // router.use('/router.name',require('./routerFile'))
 
-
+router.use('/api',require('./api'))
 
 //I need to export this to be available to index.js , where we will use it 
 module.exports=router; 
