@@ -16,7 +16,7 @@ try {
     return res.json(200,{
         message:"Sign in SuccessFully , here is your token , please keep it safe",
         data:{
-            token : jwt.sign(user.toJSON(),'CodeBook',{expiresIn:'10000'}) //jwt.sign() is a fun() where i will pass my user and convert it to Json , and the key which we created in passport-jwt to encrypt , same key should be here to decrypt || 10000 is milisecond
+            token : jwt.sign(user.toJSON(),'CodeBook',{expiresIn:'100000'}) //jwt.sign() is a fun() where i will pass my user and convert it to Json , and the key which we created in passport-jwt to encrypt , same key should be here to decrypt || 10000 is 10sec ,100000 is 100sec
         }
     })
 

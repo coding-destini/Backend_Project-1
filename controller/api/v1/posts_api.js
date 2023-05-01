@@ -1,11 +1,10 @@
 const Post = require("../../../models/post");
-const Comment = require('../../../models/comment')
+const Comment = require("../../../models/comment");
 
 module.exports.index = async function (req, res) {
   try {
     // populate the user of each post
-    let posts = await Post
-      .find({})
+    let posts = await Post.find({})
       .populate("user")
       .sort("-createdAt")
       .populate({
@@ -26,24 +25,30 @@ module.exports.index = async function (req, res) {
 };
 
 module.exports.destroy = async (req, res) => {
-    try {
-      // Check if the post exists
-      let post = await Post.findOneAndDelete({ _id: req.params.id });
-  
-      if (!post) {
-        console.log("Post not found");
-        return res.status(404).send("Post not found");
-      }
+  try {
+    // Check if the post exists
+    let post = await Post.findById(req.params.id );
+
+    if (!post) {
+      console.log("Post not found");
+      return res.status(404).send("Post not found");
+    }
+    if (post.user == req.user.id) {
+      post.remove();
       // Delete the post's associated comments
       await Comment.deleteMany({ post: req.params.id });
-
-      return res.json(200,{
-        message:"Post deleted associated with comments"
-      })
-    } catch (error) {
-        console.log("error ---- ",error)
-      return res.json(400,{
-        message:"error in deleting post"
-      })
+      return res.json(200, {
+        message: "Post deleted associated with comments",
+      });
+    } else {
+      return res.json(401, {
+        message: "you cannot delete post !",
+      });
     }
-  };
+  } catch (error) {
+    console.log("error ---- ", error);
+    return res.json(400, {
+      message: "error in deleting post",
+    });
+  }
+};

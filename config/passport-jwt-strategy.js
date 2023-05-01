@@ -8,7 +8,7 @@ const User = require('../models/user');
 
 //Read Docs
 let option = {
-    jwtFromRequest : ExtractJWT.fromAuthHeaderAsBearerToken,
+    jwtFromRequest : ExtractJWT.fromAuthHeaderAsBearerToken(),
     secretOrKey : "CodeBook" 
 }
 
