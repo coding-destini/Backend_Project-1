@@ -13,7 +13,7 @@ const path = require('path');
     // if we don't estblished the identity anyone could use gmail to send mail from anyone to anyone
     auth: {
       user: 'akashshahngu@gmail.com', // generated ethereal user
-      pass: 'coding-destini', // generated ethereal password
+      pass: 'vtuljedjzujglqom', // generated ethereal password
     },
 
   });
