@@ -18,6 +18,9 @@ router.use('/comments',require('./comments'));
 
 router.use('/api',require('./api'))
 
+// likes 
+router.use('/likes',require('./likes'))
+
 //I need to export this to be available to index.js , where we will use it 
 module.exports=router; 
 // Once we export the router we need to tell app to use it. Do you remember we did(app.use,app.get), so we need to tell app, all the get post everthing will be handle by this module now
