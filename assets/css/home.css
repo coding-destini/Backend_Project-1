@@ -16,3 +16,70 @@
     #home-container #friends a {
       text-decoration: none;
       font-size: 2rem; }
+  
+.chat{
+  width: 320px;
+  display: flexbox;
+  float: right;
+  position: fixed;
+  bottom: 0;
+     bottom:0;
+     right:0;
+  .chatHeader{
+    background-color: rgb(240, 114, 114);
+    padding: 10px 20px;
+    border-radius: 25px 25px 0 0 ;
+  }
+  .chatArea{
+    height: 150px;
+    padding: 5px 10px;
+    border: 1px solid black;
+    .fchat{
+      width: 50%;
+      background-color: rgb(252, 224, 188);
+      padding: 5px 6px;
+      border-radius: 0px 20px 20px 20px ;
+      margin: 5px;
+    }
+    .uchat{
+      display: flex;
+      justify-content: flex-end;
+      float: right;
+      width: 50%;
+      .currentUser{
+      background-color: rgb(192, 149, 93);
+      padding: 5px 6px;
+      border-radius: 20px 20px 0px 20px ;
+      margin: 5px;
+      }
+      #user{display: flex;
+        font-size: 10px;
+        align-items: end;
+      }
+    }
+  
+  
+  }
+  .chatbottom{
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 0px 0px 20px 20px ;
+  #message{
+    padding: 10px;
+    border-radius: 25px;
+    border: 1px solid black;
+  }
+  .sendChatBTN{
+    .mbtn{
+    margin: 5px;
+    padding: 5px 8px;
+    background-color: greenyellow;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    }
+  }
+  }
+}

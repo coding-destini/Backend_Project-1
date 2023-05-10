@@ -29,7 +29,29 @@
         </a>
       </p>
       <%}%>
+
   </section>
+  <%if(locals.user){%>
+    <!-- chat  -->
+<div class="chat">
+<div class="chatHeader">Friend</div>
+<div class="chatArea">
+<div class="fchat">hi Akash
+</div>
+<div class="uchat"><p class="currentUser">Hi how are you Mohit</p>
+  <i id="user">You</i>
+</div>
+
+</div>
+<div class="chatbottom">
+<div class="typeArea"><input  id="message" type="text" name="message" id="message" placeholder="Type message..."></div>
+<div class="sendChatBTN"><button class="mbtn">Send</button></div>
+</div>
+</div>
+
+</div>
+<%}%>
+
 </div>
 
 <script src="/js/home_post_comment.js"></script>
