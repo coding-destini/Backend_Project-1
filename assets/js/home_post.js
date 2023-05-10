@@ -59,9 +59,11 @@ let newPostDOM = function(post){
   <div id="content"><p>${post.content}</p></div>
 
 <small>
+<button>
 <a   class="toogle-like-button" data-likes="0"  href="/likes/toogle/?id=${post._id}&type=Post">
   0 Likes 
  </a>
+</button>
 </small>
 
   <div class="post-comments">

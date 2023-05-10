@@ -74,9 +74,9 @@ class PostComments {
                                 ${comment.user.name}
                             </small>
                             <small>
-                            <a   class="toogle-like-button" data-likes="0"  href="/likes/toogle/?id=${comment._id}&type=Comment">
-                            0 Likes 
-                         </a>
+                         <button>   <a   class="toogle-like-button" data-likes="0"  href="/likes/toogle/?id=${comment._id}&type=Comment">
+                         0 Likes 
+                      </a></button>
 </small>
                         </p>    
 

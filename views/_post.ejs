@@ -20,9 +20,9 @@
 <small>
 <% if(locals.user){ %>
   <!-- if user log in it will show me likes count with link to like of dislike  -->
-<a   class="toogle-like-button" data-likes="<%=post.likes.length%>"  href="/likes/toogle/?id=<%=post._id%>&type=Post">
+<button><a   class="toogle-like-button" data-likes="<%=post.likes.length%>"  href="/likes/toogle/?id=<%=post._id%>&type=Post">
   <%=post.likes.length%> Likes 
- </a>
+ </a></button>
   <%} else{%>
     <!-- //If user sign out it will just show me the no. of likes  -->
     <%=post.likes.length%> Likes
