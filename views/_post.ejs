@@ -15,8 +15,22 @@
     <b><p><%=post.user.name%></p></b>
   </div>
   <div id="content"><p><%=post.content%></p></div>
+<br>
+<!-- Likes  -->
+<small>
+<% if(locals.user){ %>
+  <!-- if user log in it will show me likes count with link to like of dislike  -->
+<a   class="toogle-like-button" data-likes="<%=post.likes.length%>"  href="/likes/toogle/?id=<%=post._id%>&type=Post">
+  <%=post.likes.length%> Likes 
+ </a>
+  <%} else{%>
+    <!-- //If user sign out it will just show me the no. of likes  -->
+    <%=post.likes.length%> Likes
+    <%}%>
 
-    <div class="post-comments">
+</small>
+  
+<div class="post-comments">
         <% if (locals.user){ %>
             <!-- let's give an id to the new comment form, we'll also need to make the same changes in home_posts.js where we're adding a post to the page -->
             <form id="post-<%=post._id%>-c" action="/comments/create" method="post">

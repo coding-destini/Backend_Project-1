@@ -39,7 +39,7 @@ module.exports.toogleLike = async (req,res)=>{
             user:req.user._id
         })
        //now push like in whichever it is create from (Post or comment)
-       likeable.likes.push(like) // Or like._id  , it automatically take the id when we write only 'like' 
+       likeable.likes.push(newLike._id)
        likeable.save();
        }
 return res.json(200,{

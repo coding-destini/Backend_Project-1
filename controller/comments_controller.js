@@ -81,6 +81,9 @@ module.exports.destroy = async (req, res) => {
     await Post.findByIdAndUpdate(postId, {
       $pull: { comments: req.params.id },
     });
+    
+    //delte all likes which is associated with comments
+    await Like.deleteMany({likeable:comment._id, onModel:'Comment'});
 
     // send the comment id which was deleted back to the views
     if (req.xhr) {

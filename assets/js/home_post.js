@@ -21,6 +21,8 @@ let createPost = function(){
          deletePost($(' .delete-post-button', newPost));
         
          new PostComments(data.data.post._id);
+         //enable the functionality of the toogle like button on the new post
+         new ToggleLike($('.toogle-like-button',newPost))
 
          new Noty({
           theme: "relax",
@@ -55,6 +57,12 @@ let newPostDOM = function(post){
     <b><p>${post.user.name}</p></b>
   </div>
   <div id="content"><p>${post.content}</p></div>
+
+<small>
+<a   class="toogle-like-button" data-likes="0"  href="/likes/toogle/?id=${post._id}&type=Post">
+  0 Likes 
+ </a>
+</small>
 
   <div class="post-comments">
   
